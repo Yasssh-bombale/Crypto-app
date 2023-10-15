@@ -3,7 +3,7 @@ import React from 'react';
 import avtr from '../assets/y1.jpg';
 const Footer = () => {
   return (
-    <Box minH={'48'} px={'16'} py={['16', '8']} border={'1px solid'}>
+    <Box minH={'48'} px={'16'} py={['16', '8']} boxShadow={'dark-lg'}>
       <Stack direction={['column', 'row']} alignItems={'center'}>
         <VStack width={'full'} alignItems={['center', 'flex-start']}>
           <Text fontWeight={'bold'}>About Us</Text>
