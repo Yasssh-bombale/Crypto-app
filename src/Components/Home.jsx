@@ -1,4 +1,12 @@
-import { Box, HStack, Heading, Image, Text, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  HStack,
+  Heading,
+  Image,
+  Stack,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -7,9 +15,21 @@ import img2 from '../assets/ss2.png';
 import img3 from '../assets/ss3.png';
 const Home = () => {
   return (
-    <Box width={'full'} bgColor={'#E1E1E1'} height={'85vh'}>
-      <HStack border={'1px solid'} width={'full'} p={'16'}>
+    <Box width={'full'} bgColor={'#E1E1E1'} height={['100vh', '85vh']}>
+      <Stack
+        border={'1px solid'}
+        width={'full'}
+        direction={['column', 'row']}
+        wrap={'wrap'}
+        p={['4', '16']}
+      >
         <motion.div
+          style={{
+            border: '1px solid black',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
           animate={{
             translateY: '25px',
           }}
@@ -22,24 +42,25 @@ const Home = () => {
           <Image
             border={'1px solid'}
             src={img1}
-            w={'450'}
-            h={'450'}
-            mr={'20'}
+            w={['200', '450']}
+            h={['200', '450']}
+            mr={['0', '20']}
             objectFit={'contain'}
           />
         </motion.div>
-        <VStack border={'1px solid'}>
+        <VStack border={'2px solid red'} mt={['10', '0']} w={['full', '65%']}>
           <Heading
             border={'1px solid'}
             w={'full'}
             p={'4'}
-            size={'xl'}
+            size={['lg', 'xl']}
             textAlign={'center'}
             color={'#883AA8'}
             fontFamily={'Poppins'}
             fontWeight={'medium'}
+            // noOfLines={2}
           >
-            Hey..! Roy , Experience The New Crypto World !!
+            Hey..! Roy, Experience The New Crypto World !!
           </Heading>
           <Text
             width={'full'}
@@ -85,7 +106,7 @@ const Home = () => {
             />
           </HStack>
         </VStack>
-      </HStack>
+      </Stack>
     </Box>
   );
 };
