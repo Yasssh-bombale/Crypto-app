@@ -9,6 +9,7 @@ import CoinDetails from './Components/CoinDetails';
 import Footer from './Components/Footer';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path={'/login'} element={<Login />} />
         <Route path={'/register'} element={<Register />} />
       </Routes>
+      <Toaster />
       <Footer />
     </Router>
   );

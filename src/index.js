@@ -6,7 +6,6 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
-
 root.render(
   <StrictMode>
     <ColorModeScript />
@@ -18,3 +17,4 @@ root.render(
 );
 
 export const server = 'https://api.coingecko.com/api/v3';
+export const server1 = 'https://nodejs-todoapp-evy8.onrender.com/api/v1';
