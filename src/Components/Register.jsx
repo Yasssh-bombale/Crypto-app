@@ -7,7 +7,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { server1 } from '../index';
 
 import axios from 'axios';
@@ -16,7 +16,7 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [isRegistered, setisRegistered] = useState(false);
   const submitHandler = async e => {
     e.preventDefault();
     console.log(name, email, password);
@@ -37,12 +37,14 @@ const Register = () => {
       );
       console.log(data.msg);
       toast.success(data.msg);
+      setisRegistered(true);
     } catch (error) {
       console.log(error);
-      toast.error('Opps ! some error occured');
+      toast.error(error.response.data.msg);
+      setisRegistered(false);
     }
   };
-
+  if (isRegistered) return <Navigate to={'/login'} />;
   return (
     <Container maxW={'container.xl'} p={'16'} h={'100vh'} border={'1px solid'}>
       <form onSubmit={submitHandler}>

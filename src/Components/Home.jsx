@@ -1,11 +1,33 @@
 import { Box, Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 import img1 from '../assets/1.jpg';
 import img2 from '../assets/ss2.png';
 import img3 from '../assets/ss3.png';
+import { context, server1 } from '..';
+import axios from 'axios';
 const Home = () => {
+  // console.log(user.name);
+  const { user, setUser, setisAuthenticated, isAuthenticated } =
+    useContext(context);
+
+  useEffect(() => {
+    axios
+      .get(`${server1}/user/me`, {
+        withCredentials: true,
+      })
+      .then(res => {
+        setUser(res.data.user);
+        // console.log(res.data.user.name);
+        setisAuthenticated(true);
+      })
+      .catch(error => {
+        setUser({});
+        setisAuthenticated(false);
+      });
+  }, []);
+
   return (
     <Box width={'full'} bgColor={'#E1E1E1'} minH={['110vh', '90vh']}>
       <Stack
@@ -52,7 +74,7 @@ const Home = () => {
             fontWeight={'medium'}
             // noOfLines={2}
           >
-            Hey..! Roy , Experience The New Crypto World !!
+            Hey..! {user.name} , Experience The New Crypto World !!
           </Heading>
           <Text
             width={'full'}

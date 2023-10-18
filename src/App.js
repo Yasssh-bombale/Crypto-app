@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Components/Home';
@@ -10,8 +10,28 @@ import Footer from './Components/Footer';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import { Toaster } from 'react-hot-toast';
+import axios from 'axios';
+import { context, server1 } from '.';
 
 function App() {
+  // const { setUser, setisAuthenticated } = useContext(context);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`${server1}/user/me`, {
+  //       withCredentials: true,
+  //     })
+  //     .then(res => {
+  //       setUser(res.data.user);
+  //       // console.log(res.data.user.name);
+  //       setisAuthenticated(true);
+  //     })
+  //     .catch(error => {
+  //       setUser({});
+  //       setisAuthenticated(false);
+  //     });
+  // }, []);
+
   return (
     <Router>
       <Header />

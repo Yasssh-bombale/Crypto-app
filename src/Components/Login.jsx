@@ -7,16 +7,21 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import axios from 'axios';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { server1 } from '..';
+import React, { useContext, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import { context, server1 } from '..';
 import toast from 'react-hot-toast';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { isAuthenticated, setisAuthenticated, loading, setLoading } =
+    useContext(context);
+
   const submitHandler = async e => {
     e.preventDefault();
+    setLoading(true);
+    console.log('loading status is :', loading);
     try {
       const { data } = await axios.post(
         `${server1}/user/login`,
@@ -32,12 +37,16 @@ const Login = () => {
         }
       );
       toast.success(data.msg);
+      setisAuthenticated(true);
+      setLoading(false);
     } catch (error) {
-      toast.error('some error occured !');
+      toast.error(error.response.data.msg);
       console.log(error);
+      setisAuthenticated(false);
+      setLoading(false);
     }
   };
-
+  if (isAuthenticated) return <Navigate to={'/'} />;
   return (
     <Container maxW={'container.xl'} p={'16'} h={'100vh'} border={'1px solid'}>
       <form onSubmit={submitHandler}>

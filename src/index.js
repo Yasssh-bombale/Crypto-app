@@ -11,6 +11,8 @@ export const context = createContext({ isAuthenticated: false });
 
 const AppWrapper = () => {
   const [isAuthenticated, setisAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState({});
   return (
     <ChakraProvider theme={theme}>
       <ColorModeSwitcher />
@@ -18,6 +20,10 @@ const AppWrapper = () => {
         value={{
           isAuthenticated,
           setisAuthenticated,
+          loading,
+          setLoading,
+          user,
+          setUser,
         }}
       >
         <App />
