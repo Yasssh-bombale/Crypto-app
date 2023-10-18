@@ -6,13 +6,41 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { server1 } from '..';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const submitHandler = async e => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        `${server1}/user/login`,
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          withCredentials: true,
+        }
+      );
+      toast.success(data.msg);
+    } catch (error) {
+      toast.error('some error occured !');
+      console.log(error);
+    }
+  };
+
   return (
     <Container maxW={'container.xl'} p={'16'} h={'100vh'} border={'1px solid'}>
-      <form>
+      <form onSubmit={submitHandler}>
         <VStack
           alignItems={'stretch'}
           spacing={'6'}
@@ -27,6 +55,8 @@ const Login = () => {
             type={'email'}
             placeholder={'Enter your email'}
             focusBorderColor={'purple.500'}
+            value={email}
+            onChange={e => setEmail(e.target.value)}
             required
           />
 
@@ -34,6 +64,8 @@ const Login = () => {
             type={'password'}
             placeholder={'Enter your password'}
             focusBorderColor={'purple.500'}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
             required
           />
 

@@ -1,18 +1,35 @@
 import { ChakraProvider, ColorModeScript, theme } from '@chakra-ui/react';
-import React, { StrictMode } from 'react';
+import React, { StrictMode, createContext, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
+
+export const context = createContext({ isAuthenticated: false });
+
+const AppWrapper = () => {
+  const [isAuthenticated, setisAuthenticated] = useState(false);
+  return (
+    <ChakraProvider theme={theme}>
+      <ColorModeSwitcher />
+      <context.Provider
+        value={{
+          isAuthenticated,
+          setisAuthenticated,
+        }}
+      >
+        <App />
+      </context.Provider>
+    </ChakraProvider>
+  );
+};
+
 root.render(
   <StrictMode>
     <ColorModeScript />
-    <ChakraProvider theme={theme}>
-      <ColorModeSwitcher />
-      <App />
-    </ChakraProvider>
+    <AppWrapper />
   </StrictMode>
 );
 
