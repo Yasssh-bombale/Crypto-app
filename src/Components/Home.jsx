@@ -63,19 +63,34 @@ const Home = () => {
           />
         </motion.div>
         <VStack mt={['10', '0']} w={['full', '65%']}>
-          <Heading
-            // border={'1px solid'}
-            w={'full'}
-            p={'4'}
-            size={['lg', 'xl']}
-            textAlign={'center'}
-            color={'#883AA8'}
-            fontFamily={'Poppins'}
-            fontWeight={'medium'}
-            // noOfLines={2}
-          >
-            Hey..! {user.name} , Experience The New Crypto World !!
-          </Heading>
+          {isAuthenticated ? (
+            <Heading
+              // border={'1px solid'}
+              w={'full'}
+              p={'4'}
+              size={['lg', 'xl']}
+              textAlign={'center'}
+              color={'#883AA8'}
+              fontFamily={'Poppins'}
+              fontWeight={'medium'}
+              // noOfLines={2}
+            >
+              Hey..! {user.name} , Experience The New Crypto World !!
+            </Heading>
+          ) : (
+            <Heading
+              w={'full'}
+              p={'4'}
+              size={['lg', 'xl']}
+              textAlign={'center'}
+              color={'#883AA8'}
+              fontFamily={'Poppins'}
+              fontWeight={'medium'}
+            >
+              Opps ! It Looks like you are not logged in !
+            </Heading>
+          )}
+
           <Text
             width={'full'}
             p={'4'}
