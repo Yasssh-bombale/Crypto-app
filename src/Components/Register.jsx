@@ -46,14 +46,20 @@ const Register = () => {
   };
   if (isRegistered) return <Navigate to={'/login'} />;
   return (
-    <Container maxW={'container.xl'} p={'16'} h={'100vh'} border={'1px solid'}>
+    <Container
+      maxW={'container.xl'}
+      p={['4', '16']}
+      pt={['35%', '16']}
+      h={'100vh'}
+      // border={'1px solid'}
+    >
       <form onSubmit={submitHandler}>
         <VStack
           alignItems={'stretch'}
           spacing={'6'}
-          border={'1px solid'}
-          w={'40%'}
-          p={'16'}
+          // border={'1px solid'}
+          w={['full', '40%']}
+          p={['8', '16']}
           m={'auto'}
         >
           <Avatar alignSelf={'center'} boxSize={'100'} />

@@ -34,7 +34,7 @@ const CoinDetails = () => {
 
   const params = useParams();
 
-  const btns = ['24h', '7d', '14d', '30d', '60', '200d', '1y', 'max'];
+  const btns = ['24h', '7d', '14d', '30d', '60d', '200d', '1y', 'max'];
 
   const switchChartsStats = key => {
     switch (key) {

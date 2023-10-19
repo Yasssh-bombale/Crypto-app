@@ -33,7 +33,13 @@ const Header = () => {
   };
 
   return (
-    <HStack shadow={'lg'} p={'4'} spacing={'4'}>
+    <HStack
+      shadow={'lg'}
+      p={'4'}
+      pl={['0', '4']}
+      pr={['0', '4']}
+      spacing={['1', '4']}
+    >
       <Button variant={'ghost'} colorScheme="purple">
         <Link to={'/'}>Home</Link>
       </Button>

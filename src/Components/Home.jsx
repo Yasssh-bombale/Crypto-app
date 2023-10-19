@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <Box width={'full'} bgColor={'#E1E1E1'} minH={['110vh', '90vh']}>
       <Stack
-        // border={'1px solid'}
+        // border={'1px solid red'}
         width={'full'}
         direction={['column', 'row']}
         wrap={'wrap'}
@@ -39,7 +39,6 @@ const Home = () => {
       >
         <motion.div
           style={{
-            // border: '1px solid black',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -58,11 +57,11 @@ const Home = () => {
             src={img1}
             w={['200', '450']}
             h={['200', '450']}
-            mr={['0', '20']}
+            // mr={['0', '20']}
             objectFit={'contain'}
           />
         </motion.div>
-        <VStack mt={['10', '0']} w={['full', '65%']}>
+        <VStack mt={['10', '0']} w={['full', '67%']}>
           {isAuthenticated ? (
             <Heading
               // border={'1px solid'}
@@ -81,6 +80,7 @@ const Home = () => {
             <Heading
               w={'full'}
               p={'4'}
+              // border={'1px solid'}
               size={['lg', 'xl']}
               textAlign={'center'}
               color={'#883AA8'}
